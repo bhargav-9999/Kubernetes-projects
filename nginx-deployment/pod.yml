@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: sample-web
+spec:
+  containers:
+  - name: sample-web
+    image: bhargav99/nginx-website:latest
+    ports:
+    - containerPort: 80
