@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: https-web
+  labels:
+    app: https-web
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: https-web
+  template:
+    metadata:
+      labels:
+        app: https-web
+    spec:
+      containers:
+      - name: https-web
+        image: bhargav99/https-website:latest
+        volumeMounts:
+         - name: db-connection
+           mountPath: /opt
+        ports:
+        - containerPort: 80
+      volumes:
+        - name: db-connection
+          configMap:
+            name: demo-config
